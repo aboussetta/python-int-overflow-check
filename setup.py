@@ -4,19 +4,20 @@ import ez_setup
 ez_setup.use_setuptools()
 
 from setuptools import setup, find_packages
+
+
 setup(
     name='int-overflow-check',
     version='0.1b.dev',
-    author='Elmer Medez',
+    author='PalominoDB',
     author_email='oss@palominodb.com',
     packages=find_packages(exclude=['tests']),
-    data_files=[('.',['docs/*'])],
     url="http://pypi.python.org/pypi/int-overflow-check",
     license='GPLv2',
     description='Check MySQL tables for potential integer overflows',
     install_requires=[
-        'MySQL-python',
-        'argparse',
+        'MySQL-python>=1.2',
+        'argparse>=1.2',
     ],
     entry_points={
         'console_scripts': [
