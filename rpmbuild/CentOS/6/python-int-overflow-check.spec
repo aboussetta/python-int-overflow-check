@@ -20,7 +20,7 @@ Requires: gcc python >= 2.6 python-setuptools >= 0.6 mysql-devel >= 5.0 MySQL-py
 Url: http://pypi.python.org/pypi/int-overflow-check
 
 %description
-UNKNOWN
+Check MySQL tables for potential integer overflows
 
 %prep
 %setup -n %{pname}-%{unmangled_version} -n %{pname}-%{unmangled_version}
