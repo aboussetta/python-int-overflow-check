@@ -16,7 +16,8 @@ Prefix: %{_prefix}
 BuildArch: noarch
 Vendor: PalominoDB <oss@palominodb.com>
 Packager: PalominoDB <oss@palominodb.com>
-Requires: gcc python >= 2.6 python-setuptools >= 0.6 mysql-devel >= 5.0 MySQL-python >= 1.2 python-argparse >= 1.2
+BuildRequires python >= 2.4
+Requires: gcc python >= 2.4 python-setuptools >= 0.6 mysql-devel >= 5.0 MySQL-python >= 1.2 python-argparse >= 1.2
 Url: http://pypi.python.org/pypi/int-overflow-check
 
 %description
