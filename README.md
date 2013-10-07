@@ -93,6 +93,26 @@ Install your virtual environment:
 virtualenv -p /usr/local/bin/python2.7 --no-site-packages ~/venv/myenv
 ```
 
+Installing Script From an RPM package
+-------------------------------------
+
+For CentOS 6:
+
+* Download an RPM package from the following link:
+http://ci.palominodb.com:8080/job/python-int-overflow-check-centos-6-x86_64/
+
+* Enable EPEL repository
+$ wget -N http://dl.fedoraproject.org/pub/epel/6/`uname -i`/epel-release-6-8.noarch.rpm
+$ sudo rpm -Uvh epel-release-6-8.noarch.rpm
+
+* Install script
+$ sudo yum --nogpgcheck localinstall <RPM PACKAGE>
+
+* Upon succesful installation, the following executable script should be available:
+/usr/bin/pdb_check_maxvalue
+
+
+
 Running the Script
 ------------------
 
