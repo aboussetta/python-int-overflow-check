@@ -42,7 +42,7 @@ Build when a change is pushed to GitHub: (checked)
 
 
 Execute shell > Command:
-sudo cp $WORKSPACE/packaging/mock-target-configs/centos-5-x86_64-epel.cfg /etc/mock/
+sudo cp -u $WORKSPACE/packaging/mock-target-configs/centos-5-x86_64-epel-ius-pdb.cfg /etc/mock/
 rm -rf /home/jenkins/packages/python-int-overflow-check-centos-5-x86_64
 rm -rf $WORKSPACE/results
 mkdir -p $WORKSPACE/results
@@ -98,7 +98,7 @@ Build when a change is pushed to Github: (checked)
 
 
 Execute shell > Command:
-sudo cp $WORKSPACE/packaging/mock-target-configs/centos-6-x86_64-epel-ius-pdb.cfg /etc/mock/
+sudo cp -u $WORKSPACE/packaging/mock-target-configs/centos-6-x86_64-epel-ius-pdb.cfg /etc/mock/
 rm -rf /home/jenkins/packages/python-int-overflow-check-centos-6-x86_64
 rm -rf $WORKSPACE/results
 mkdir -p $WORKSPACE/results
