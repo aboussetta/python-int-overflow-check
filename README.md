@@ -96,17 +96,51 @@ virtualenv -p /usr/local/bin/python2.7 --no-site-packages ~/venv/myenv
 Installing Script From an RPM package
 -------------------------------------
 
+
+For CentOS 5:
+
+* Download an RPM package from the following link:
+http://ci.palominodb.com:8080/job/python-int-overflow-check-centos-5-x86_64/
+
+* Enable EPEL repository
+# wget  http://dl.fedoraproject.org/pub/epel/5/`uname -i`/epel-release-5-4.noarch.rpm
+# rpm -Uvh epel-release-5-4.noarch.rpm
+
+* Install script
+# yum --nogpgcheck localinstall <RPM PACKAGE>
+
+* Upon succesful installation, the following executable script should be available:
+/usr/bin/pdb_check_maxvalue
+
+
+
 For CentOS 6:
 
 * Download an RPM package from the following link:
 http://ci.palominodb.com:8080/job/python-int-overflow-check-centos-6-x86_64/
 
 * Enable EPEL repository
-$ wget -N http://dl.fedoraproject.org/pub/epel/6/`uname -i`/epel-release-6-8.noarch.rpm
-$ sudo rpm -Uvh epel-release-6-8.noarch.rpm
+# wget -N http://dl.fedoraproject.org/pub/epel/6/`uname -i`/epel-release-6-8.noarch.rpm
+# rpm -Uvh epel-release-6-8.noarch.rpm
 
 * Install script
-$ sudo yum --nogpgcheck localinstall <RPM PACKAGE>
+# yum --nogpgcheck localinstall <RPM PACKAGE>
+
+* Upon succesful installation, the following executable script should be available:
+/usr/bin/pdb_check_maxvalue
+
+
+Installing Script From a DEB package
+------------------------------------
+
+
+For Ubuntu 12.04:
+
+* Download an RPM package from the following link:
+http://ci.palominodb.com:8080/job/python-int-overflow-check-ubuntu-12.04-x86_64/
+
+* Install script
+$ sudo gdebi <DEB PACKAGE>
 
 * Upon succesful installation, the following executable script should be available:
 /usr/bin/pdb_check_maxvalue
@@ -285,117 +319,3 @@ If you need to customize the settings further, the following link will help you 
 http://docs.python.org/release/2.4.4/lib/logging-config-fileformat.html
 
 
-Building and Installing Packages
---------------------------------
-
-
-### Building RPM package on CentOS 5 using the default Python version
-
-Add EPEL repo first:
-```
-# yum install wget
-# wget http://dl.fedoraproject.org/pub/epel/5/`uname -i`/epel-release-5-4.noarch.rpm
-# rpm -Uvh epel-release-5-4.noarch.rpm
-```
-
-Install required packages:
-```
-# yum groupinstall "Development Tools"
-```
-
-Use the package-centos5 branch to build package. It is recommended to build RPM packages using non-root user to avoid unwanted changes to the system.
-```
-$ git checkout package-centos5
-$ python setup.py bdist_rpm
-```
-An RPM package will be created in dist directory.
-
-
-### Installing package on CentOS 5
-
-Add EPEL repo first, it is needed for resolving dependencies:
-```
-# yum install wget
-# wget http://dl.fedoraproject.org/pub/epel/5/`uname -i`/epel-release-5-4.noarch.rpm
-# rpm -Uvh epel-release-5-4.noarch.rpm
-```
-
-Install package:
-```
-# yum --nogpgcheck localinstall <package.rpm>
-```
-
-At this point the following executable script is now ready to be used:
-```
-pdb_check_maxvalue
-```
-
-### Building RPM package on CentOS 6 using the default Python version
-
-Add EPEL repo first:
-```
-# yum install wget
-# wget http://dl.fedoraproject.org/pub/epel/6/`uname -i`/epel-release-6-8.noarch.rpm
-# rpm -Uvh epel-release-6-8.noarch.rpm
-```
-
-Install required packages:
-```
-# yum groupinstall "Development Tools"
-```
-
-Use the package-centos6 branch to build package. It is recommended to build RPM packages using non-root user to avoid unwanted changes to the system.
-```
-$ git checkout package-centos6
-$ python setup.py bdist_rpm
-```
-An RPM package will be created in dist directory.
-
-
-### Installing package on CentOS 6
-
-Add EPEL repo first, it is needed for resolving dependencies:
-```
-# yum install wget
-# wget http://dl.fedoraproject.org/pub/epel/6/`uname -i`/epel-release-6-8.noarch.rpm
-# rpm -Uvh epel-release-6-8.noarch.rpm
-```
-
-Install package:
-```
-# yum --nogpgcheck localinstall <package.rpm>
-```
-
-### Installing package on Amazon Linux 2013.03.1
-
-The package built for CentOS 6 - Python 2.6 should be compatible with any OS that have RPM-based package manager and Python 2.6.
-To install:
-```
-$ sudo yum --nogpgcheck localinstall <package.rpm>
-```
-
-### Building DEB package on Ubuntu 12.04.2 LTS using the default Python version
-
-Install required packages:
-```
-$ sudo apt-get install apt-file
-$ sudo apt-file update
-$ sudo apt-get install python-stdeb
-$ sudo apt-get install python-support
-```
-
-Build package.
-```
-python setup.py --command-packages=stdeb.command bdist_deb
-```
-A DEB package will be created in deb_dist directory.
-
-
-### Installing package on Ubuntu 12.04.2
-
-Install using gdebi since it is capable of resolving dependencies:
-```
-$ sudo apt-get update
-$ sudo apt-get install gdebi-core
-$ sudo gdebi <package.deb>
-```
