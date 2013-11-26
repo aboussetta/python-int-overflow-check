@@ -1,0 +1,12 @@
+Source: int-overflow-check
+Section: python
+Priority: extra
+Maintainer: Elmer Medez <emedez@palominodb.com>
+Build-Depends: debhelper (>= 8.0.0), python-all, python-setuptools
+Standards-Version: 3.9.2
+
+Package: python-int-overflow-check
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}
+Description: Check for max values of int-type columns
+ Check for max values of int-type columns. 
