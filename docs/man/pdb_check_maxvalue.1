@@ -1,0 +1,88 @@
+.\" Manpage for pdb_check_maxvalue.
+.nh
+.na
+.TH PDB_CHECK_MAXVALUE 1 "2013 Nov 21"
+.SH NAME
+pdb_check_maxvalue \- runs a check to insure that no values are coming close to reaching a limit for any of the integer values
+.SH SYNOPSIS
+.B pdb_check_maxvalue
+.B [
+.I OPTION
+.B ]...
+.SH DESCRIPTION
+Check for max values in all columns of integer types that have reached N pct of the maximum value for that type of integer.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-H\fR HOSTNAME, \fB\-\-hostname\fR HOSTNAME
+Name of host to connect to. (default: None)
+.TP
+\fB\-P\fR PORT, \fB\-\-port\fR PORT
+The port to be used when connecting to host. (default:
+3306)
+.TP
+\fB\-u\fR USER, \fB\-\-user\fR USER
+The username to be used when connecting to host.
+(default: None)
+.TP
+\fB\-p\fR PASSWORD, \fB\-\-password\fR PASSWORD
+The password to be used when connecting to host.
+(default: None)
+.TP
+\fB\-d\fR USE_DBS, \fB\-\-use\-dbs\fR USE_DBS
+A comma\-separated list of db names to be inspected.
+(default: None)
+.TP
+\fB\-i\fR IGNORE_DBS, \fB\-\-ignore\-dbs\fR IGNORE_DBS
+A comma\-separated list of db names to be ignored.
+(default: None)
+.TP
+\fB\-T\fR THREADS, \fB\-\-threads\fR THREADS
+Number of threads to spawn. (default: 2)
+.TP
+\fB\-e\fR EXCLUDE_COLUMNS, \fB\-\-exclude\-columns\fR EXCLUDE_COLUMNS
+Specify columns to exclude in the following format:
+schema1.table1=col1,col2,colN;schemaN.tableN=colN;...
+(default: None)
+.TP
+\fB\-\-row\-count\-max\-ratio\fR ROW_COUNT_MAX_RATIO
+If table row count ratio is less than this value,
+columns for this table are excluded from display.
+(default: 50)
+.TP
+\fB\-\-display\-row\-count\-max\-ratio\-columns\fR
+In separate section, display columns containing high
+values compared to maximum for the column datatype,
+but row count ratio is less than the value of \fB\-\-rowcount\-max\-ratio\fR. (default: False)
+.TP
+\fB\-\-results\-host\fR RESULTS_HOST
+Results database hostname. (default: None)
+.TP
+\fB\-\-results\-database\fR RESULTS_DATABASE
+Results database name. (default: None)
+.TP
+\fB\-\-results\-user\fR RESULTS_USER
+Results database username. (default: None)
+.TP
+\fB\-\-results\-password\fR RESULTS_PASSWORD
+Results database password. (default: None)
+.TP
+\fB\-\-results\-port\fR RESULTS_PORT
+Results database port. (default: None)
+.TP
+\fB\-\-scan\-all\-columns\fR
+All columns are searched. (default: False)
+.TP
+\fB\-\-secondary\-keys\fR
+Secondary keys are also searched. (default: False)
+.TP
+\fB\-w\fR WARNING, \fB\-\-warning\fR WARNING
+Warning threshold. (default: 100.0)
+.TP
+\fB\-c\fR CRITICAL, \fB\-\-critical\fR CRITICAL
+Critical threshold. (default: 100.0)
+.TP
+\fB\-L\fR LOGGING_CONFIG, \fB\-\-logging\-config\fR LOGGING_CONFIG
+Logging configuration file. (default: None)

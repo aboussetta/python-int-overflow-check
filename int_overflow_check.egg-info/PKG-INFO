@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: int-overflow-check
+Version: 0.1b.1.dev
+Summary: Check MySQL tables for potential integer overflows
+Home-page: http://pypi.python.org/pypi/int-overflow-check
+Author: PalominoDB
+Author-email: oss@palominodb.com
+License: GPLv2
+Description: UNKNOWN
+Platform: UNKNOWN
