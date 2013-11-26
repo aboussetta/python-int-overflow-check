@@ -1,12 +1,12 @@
 *~
 *.pyc
 
-# Mr Developer
-*.log
-dev.*
-.idea
-
 # Binary distribution
 build/*
 dist/*
 deb_dist/*
+
+# dev stuff
+*.log
+dev.*
+.idea
