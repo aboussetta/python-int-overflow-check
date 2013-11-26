@@ -1,7 +1,7 @@
 %define pname int-overflow-check
-%define version 0.1b.dev
-%define unmangled_version 0.1b.dev
-%define unmangled_version 0.1b.dev
+%define version 0.1b.1.dev
+%define unmangled_version 0.1b.1.dev
+%define unmangled_version 0.1b.1.dev
 %define release 1.pdb%{?dist}
 
 Summary: Check MySQL tables for potential integer overflows
@@ -31,6 +31,10 @@ python setup.py build
 
 %install
 python setup.py install --single-version-externally-managed -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+%{__mkdir_p} %{buildroot}%{_mandir}/man1
+for man in docs/man/*.1; do
+    %{__install} -p -m0644 ${man} %{buildroot}%{_mandir}/man1/
+done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -38,3 +42,4 @@ rm -rf $RPM_BUILD_ROOT
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
 %doc docs/
+%{_mandir}/man1/*
