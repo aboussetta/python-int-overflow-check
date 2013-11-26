@@ -1,0 +1,6 @@
+include COPYING
+include README.md
+include docs/*
+include docs/man/*
+include ez_setup.py
+recursive-include int_overflow_check *.py

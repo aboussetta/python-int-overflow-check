@@ -1,0 +1,3 @@
+[console_scripts]
+pdb_check_maxvalue = int_overflow_check.pdb_check_maxvalue:main
+
