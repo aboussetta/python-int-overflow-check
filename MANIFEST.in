@@ -1,6 +1,7 @@
 include COPYING
 include README.md
-include docs/*
-include docs/man/*
+recursive-include docs/*
+recursive-include packaging/*
 include ez_setup.py
 recursive-include int_overflow_check *.py
+include ci/*
