@@ -4,6 +4,9 @@ README.md
 ez_setup.py
 setup.cfg
 setup.py
+ci/build-centos-5-x86_64.sh
+ci/build-centos-6-x86_64.sh
+ci/build-ubuntu-12.04-x86_64.sh
 docs/args.sample.txt
 docs/config_sample.yml
 docs/jenkins-configuration.txt
@@ -18,3 +21,7 @@ int_overflow_check.egg-info/dependency_links.txt
 int_overflow_check.egg-info/entry_points.txt
 int_overflow_check.egg-info/requires.txt
 int_overflow_check.egg-info/top_level.txt
+packaging/SPECS/CentOS/python-int-overflow-check.spec
+packaging/mock-target-configs/centos-5-x86_64-epel-ius-pdb.cfg
+packaging/mock-target-configs/centos-5-x86_64-epel.cfg
+packaging/mock-target-configs/centos-6-x86_64-epel-ius-pdb.cfg
