@@ -1,8 +1,9 @@
 Introduction
 ============
 
-This file documents the configuration used for building RPM packages using Jenkins CI server at http://ci.palominodb.com:8080/.  Field whose default values are acceptable are not listed.
-
+This file documents the configuration used for building RPM packages 
+using Jenkins CI server at http://ci.palominodb.com:8080/.  
+Field whose default values are acceptable are not listed.
 
 
 Target Platform: CentOS 5-x86_64
@@ -42,18 +43,8 @@ Build when a change is pushed to GitHub: (checked)
 
 
 Execute shell > Command:
-sudo cp -u $WORKSPACE/packaging/mock-target-configs/centos-5-x86_64-epel-ius-pdb.cfg /etc/mock/
-rm -rf /home/jenkins/packages/python-int-overflow-check-centos-5-x86_64
-rm -rf $WORKSPACE/results
-mkdir -p $WORKSPACE/results
-cd /home/jenkins/packages
-cp -a buildroot.clean python-int-overflow-check-centos-5-x86_64
 cd $WORKSPACE
-python setup.py sdist -d /home/jenkins/packages/python-int-overflow-check-centos-5-x86_64/SOURCES/
-cp $WORKSPACE/packaging/SPECS/CentOS/python-int-overflow-check.spec /home/jenkins/packages/python-int-overflow-check-centos-5-x86_64/SPECS/
-cd /home/jenkins/packages/python-int-overflow-check-centos-5-x86_64
-rpmbuild -bs --nodeps --define "dist %{nil}" --define "_source_filedigest_algorithm md5" SPECS/python-int-overflow-check.spec
-for f in SRPMS/*.rpm; do mock -r centos-5-x86_64-epel rebuild $f --resultdir=$WORKSPACE/results ; done
+ci/build-centos-5-x86_64.sh
 
 
 [Post-build Actions]
@@ -98,18 +89,57 @@ Build when a change is pushed to Github: (checked)
 
 
 Execute shell > Command:
-sudo cp -u $WORKSPACE/packaging/mock-target-configs/centos-6-x86_64-epel-ius-pdb.cfg /etc/mock/
-rm -rf /home/jenkins/packages/python-int-overflow-check-centos-6-x86_64
-rm -rf $WORKSPACE/results
-mkdir -p $WORKSPACE/results
-cd /home/jenkins/packages
-cp -a buildroot.clean python-int-overflow-check-centos-6-x86_64
 cd $WORKSPACE
-python setup.py sdist -d /home/jenkins/packages/python-int-overflow-check-centos-6-x86_64/SOURCES/
-cp $WORKSPACE/packaging/SPECS/CentOS/python-int-overflow-check.spec /home/jenkins/packages/python-int-overflow-check-centos-6-x86_64/SPECS/
-cd /home/jenkins/packages/python-int-overflow-check-centos-6-x86_64
-rpmbuild -bs --nodeps --define "dist %{nil}" --define "_source_filedigest_algorithm md5" SPECS/python-int-overflow-check.spec
-for f in SRPMS/*.rpm; do mock  -r centos-6-x86_64-epel-ius-pdb rebuild $f --resultdir=$WORKSPACE/results ; done
+ci/build-centos-6-x86_64.sh
+
+
+[Post-build Actions]
+
+
+Archive the artifacts > Files to archive: results/*
+
+
+Target Platform: Ubuntu 12.04-x86_64
+====================================
+
+[General]
+
+Project name: python-int-overflow-check-ubuntu-12.04-x86_64
+
+Description: Build python-int-overflow-check RPM package for Ubuntu 12.04-x86_64.
+
+GitHub project: https://github.com/palominodb/python-int-overflow-check/
+
+Restrict where this project can be run: (checked)
+
+Label Expression: ubuntu
+
+
+[Source Code Management]
+
+Git: (selected)
+
+Repositories > Repository URL: https://github.com/palominodb/python-int-overflow-check.git
+
+Branches to build > Branch Specifier: debian-debian
+
+Checkout/merge to local branch: debian-debian
+
+Local subdirectory for repo: debian-debian
+
+
+[Build Triggers]
+
+
+Build when a change is pushed to Github: (checked)
+
+
+[Build]
+
+
+Execute shell > Command:
+cd $WORKSPACE/debian-debian
+ci/build-ubuntu-12.04-x86_64.sh
 
 
 [Post-build Actions]
